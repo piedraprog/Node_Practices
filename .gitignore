@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 /src/json
+
+src/javascript/exercise25.js
