@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sombreado Texto</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css"
+      integrity="sha512-sVSECYdnRMezwuq5uAjKQJEcu2wybeAPjU4VJQ9pCRcCY4pIpIw4YMHIOQ0CypfwHRvdSPbH++dA3O4Hihm/LQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+      integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/regular.min.css"
+      integrity="sha512-d2x1oQUT6HACW9UlXxWI6XrIBDrEE5z2tit/+kWEdXdVYuift7sm+Q6ucfGWQr1F0+GD9/6eYoYDegw2nm05Vw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+      integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/svg-with-js.min.css"
+      integrity="sha512-T+W8aCLi/CrpBhX5eX42Kw0/oGb/cxhQHYsQDIXx7UgK8c0A4CWw+TOQIqNJms1AZHI+6eKE4U1GubeLrguNww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css"
+      integrity="sha512-fHavkBby/gcFEB2taaBfG0DLdHRGrnvkWQNXVZ5Yb/Fj6LkogecQUd6oyvBVsrWPaHSxs5tNza6LUW/Y6Az9lQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- <div class="flex items-center justify-center h-52">
+      <div
+        class="py-2 pl-2 pr-4 border border-gray-300 rounded-lg focus:outline-none active:border-blue-500 h-10 hover:cursor-text hover:border-blue-500 flex gap-2 w-3/4"
+      >
+        <div class="-mt-3">
+          <i class="fas fa-quote-left text-xs"></i>
+        </div>
+        <div
+          contenteditable="true"
+          class="w-3/4 outline-none select-text whitespace-pre-wrap overflow-wrap-break-word"
+          role="textbox"
+          id="miInput"
+          spellcheck="false"
+          aria-label="Ingrese su frase"
+        >prueba de seleccion fuap cupira</div>
+      </div>
+    </div>
+    <div class="flex justify-center gap-4">
+      <button
+        onclick="sombrearTexto()"
+        class="bg-blue-500 p-3 text-white rounded-md font-bold"
+      >
+        Sombrear
+      </button>
+      <button
+        onclick="quitarSombreado3()"
+        class="bg-green-500 p-3 text-white rounded-md font-bold"
+      >
+        Quitar sombreado
+      </button>
+      <button
+        onclick="quitarTodo()"
+        class="bg-green-500 p-3 text-white rounded-md font-bold"
+      >
+        Quitar todo
+      </button>
+      <button
+        onclick="obtenerDondeEsta()"
+        class="bg-green-500 p-3 text-white rounded-md font-bold"
+      >
+        Obtener posición
+      </button>
+    </div>
+
+    <div class="flex items-center justify-center h-52">
+      <input
+        type="text"
+        id="palabra"
+        class="py-2 pl-2 pr-4 border border-gray-300 rounded-lg focus:outline-none active:border-blue-500 h-10 hover:cursor-text hover:border-blue-500 flex gap-2 w-3/4"
+      />
+    </div>
+
+    <div class="relative ">
+      <div class="bg-red-500 w-full h-full absolute z-10">
+        <input type="text" />
+      </div>
+      Div rojo
+      <div class="bg-gray-500 bg-opacity-50 w-full h-full absolute z-20">
+        Selecciona un machine learning para empezar a entrenar
+      </div>
+    </div> -->
+
+    <div
+      class="py-2 pl-2 pr-4 border border-gray-300 rounded-lg focus:outline-none active:border-blue-500 h-11 hover:cursor-text hover:border-blue-500 flex gap-2 w-3/4 justify-between"
+    >
+      <div class="-mt-2">
+        <i class="fas fa-quote-left text-xs"></i>
+      </div>
+      <div
+        contenteditable="true"
+        class="w-[93%] outline-none select-text whitespace-pre-wrap overflow-wrap-break-word"
+        placeholder="Ingrese una frase"
+        role="textbox"
+        spellcheck="false"
+      ></div>
+      <span class="text-sm text-gray-500">0/280</span>
+    </div>
+
+    <script src="./js/sombreado1.js"></script>
+    <!-- <script src="./js/sombreado2.js"></script> -->
+  </body>
+</html>

@@ -100,6 +100,14 @@
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Contenido de la página -->
@@ -154,46 +162,178 @@
       </button>
     </div> -->
 
-    <p>hola prueba</p>
-    <br />
-    <!-- <p></p> -->
-    <br />
-    <p>lorem ipsum</p>
-    <br />
-    <p>prueba dos adhjsbahbfhadbsubaub</p>
-    <br />
-    <!-- <p></p> -->
-    <br />
-    <p>fuap</p>
-    <br />
-    <!-- <p></p> -->
-    <br />
-    <p>adivina</p>
+    <!-- <div class="flex flex-col mr-1 gap-1 bg-slate-200 rounded-sm p-4 mt-3" *ngIf="entitiesArr.length > 0"> 
+    </div>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="min-w-full text-left text-sm font-light">
+              <thead class="border-b font-medium dark:border-neutral-500">
+                <tr>
+                  <th scope="col" class="px-6 py-4">Entidad</th>
+                  <th scope="col" class="px-6 py-4">Rol</th>
+                  <th scope="col" class="px-6 py-4">Palabra identificada</th>
+                  <th scope="col" class="px-6 py-4">Confianza</th>
+                  <th scope="col" class="px-6 py-4"></th>
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="flex rounded-md shadow-sm">
+        <div class="icon m-0 p-0">
+          <i class="fas fa-quote-left w-1"></i>
+        </div>
+        <div contenteditable="true" class="w-3/4 outline-none select-text whitespace-pre-wrap overflow-wrap-break-word" role="textbox" spellcheck="false" aria-label="Ingrese su frase">
+      </div>
+
+      </div> -->
+    <div class="flex items-center justify-center h-52">
+      <div
+        class="py-2 pl-2 pr-4 border border-gray-300 rounded-lg focus:outline-none active:border-blue-500 h-10 hover:cursor-text hover:border-blue-500 flex gap-2 w-3/4"
+      >
+        <div class="-mt-3">
+          <i class="fas fa-quote-left text-xs"></i>
+        </div>
+        <div
+          contenteditable="true"
+          class="w-3/4 outline-none select-text whitespace-pre-wrap overflow-wrap-break-word"
+          role="textbox"
+          id="miInput"
+          spellcheck="false"
+          aria-label="Ingrese su frase"
+        ></div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button onclick="sombrearTexto(11, 23)" class="bg-blue-500 p-3 text-white rounded-md font-bold">Sombrear</button>
+    </div>
 
     <script>
-      document
-        .getElementById("redireccionar")
-        .addEventListener("click", function () {
-          Swal.fire({
-            title: "Redireccionando",
-            text: "Serás redirigido en unos segundos...",
-            icon: "error",
-            showCancelButton: true,
-            showConfirmButton: true,
-            willOpen: () => {
-              // Modifica el contenido del modal
-              const confirmButton = Swal.getConfirmButton();
-              confirmButton.innerHTML = "Ir a contacto";
-              confirmButton.addEventListener("click", () => {
-                // Redirige a la página de contacto
-                window.open(
-                  "https://sweetalert2.github.io/#download",
-                  "_blank"
-                );
-              });
-            },
-          });
-        });
+      const inputElement = document.getElementById("miInput");
+
+      miInput.addEventListener("mouseup", function () {
+        resaltarTexto();
+      });
+
+      function getRandomColor() {
+        const pastelColors = [
+          "#FFD700", // Amarillo
+          "#FFA07A", // Salmón claro
+          "#FFB6C1", // Rosa claro
+          "#87CEEB", // Azul cielo
+          "#98FB98", // Verde claro
+          "#FFDAB9", // Melocotón claro
+          "#ADD8E6", // Azul claro
+          "#FFC0CB", // Rosa pastel
+        ];
+
+        return pastelColors[Math.floor(Math.random() * pastelColors.length)];
+      }
+
+      function sombrearTexto(inicio, fin) {
+        var inputElement = document.getElementById("miInput");
+        var texto = inputElement.textContent;
+
+        if (inicio >= 0 && inicio < fin && fin <= texto.length) {
+          var seleccion = document.createRange();
+          seleccion.setStart(inputElement.firstChild, inicio);
+          seleccion.setEnd(inputElement.firstChild, fin);
+
+          var seleccionSombreada = window.getSelection();
+          seleccionSombreada.removeAllRanges();
+          seleccionSombreada.addRange(seleccion);
+          resaltarTexto();
+          quitarSeleccion();
+        } else {
+          alert("Los índices de inicio y fin no son válidos.");
+        }
+      }
+
+      resaltarTexto = () => {
+        const selection = window.getSelection();
+        const selectedText = selection.toString();
+        let selectionStart, selectionEnd;
+
+        if (selection.anchorOffset <= selection.focusOffset) {
+          selectionStart = selection.anchorOffset;
+          selectionEnd = selection.focusOffset;
+        } else {
+          selectionStart = selection.focusOffset;
+          selectionEnd = selection.anchorOffset;
+        }
+
+        const selectedTextWithSpaces = miInput.innerText.slice(
+          selectionStart,
+          selectionEnd
+        );
+
+        if (selectedText.length > 0) {
+          const randomColor = getRandomColor();
+          const spanElement = document.createElement("span");
+          spanElement.style.backgroundColor = randomColor;
+
+          const range = selection.getRangeAt(0);
+          range.surroundContents(spanElement);
+          
+          console.log(
+            "Texto seleccionado (con espacios):",
+            selectedTextWithSpaces
+          );
+          console.log("Color resaltado:", randomColor);
+        }
+      };
+
+      quitarSeleccion = () => {
+        let seleccionSombreada = window.getSelection();
+        seleccionSombreada.removeAllRanges();
+      };
+
+      // contenido.addEventListener("mouseup", (event) => {
+      //   const seleccion = window.getSelection().toString().trim();
+      //   if (seleccion) {
+      //     const rango = window.getSelection().getRangeAt(0);
+      //     const span = document.createElement("span");
+      //     span.textContent = seleccion;
+
+      //     console.log(seleccion);
+      //     span.classList.add("seleccionado");
+      //     rango.deleteContents();
+      //     rango.insertNode(span);
+      //   }
+      // });
+
+      /* document
+        //   .getElementById("redireccionar")
+        //   .addEventListener("click", function () {
+        //     Swal.fire({
+        //       title: "Redireccionando",
+        //       text: "Serás redirigido en unos segundos...",
+        //       icon: "error",
+        //       showCancelButton: true,
+        //       showConfirmButton: true,
+        //       willOpen: () => {
+        //         // Modifica el contenido del modal
+        //         const confirmButton = Swal.getConfirmButton();
+        //         confirmButton.innerHTML = "Ir a contacto";
+        //         confirmButton.addEventListener("click", () => {
+        //           // Redirige a la página de contacto
+        //           window.open(
+        //             "https://sweetalert2.github.io/#download",
+        //             "_blank"
+        //           );
+        //         });
+        //       },
+        //     });
+         });*/
     </script>
   </body>
 </html>

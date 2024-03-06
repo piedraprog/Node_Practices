@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .seleccionado {
+        background-color: yellow;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="miInput" type="text" />
+
+    <div id="contenido">
+      <p>
+        Este es un texto de ejemplo. Selecciona el texto para sombrearlo y
+        cambiar su color.
+      </p>
+    </div>
+
+    <script>
+      const inputElement = document.getElementById("miInput");
+
+      inputElement.addEventListener("mouseup", () => {
+        const selectedText = inputElement.value.substring(
+          inputElement.selectionStart,
+          inputElement.selectionEnd
+        );
+
+        if (selectedText.length > 0) {
+          console.log("Texto seleccionado:", selectedText);
+          // Aquí puedes realizar cualquier acción que necesites cuando se seleccione texto
+        }
+      });
+
+      contenido.addEventListener("mouseup", (event) => {
+        const seleccion = window.getSelection().toString().trim();
+        if (seleccion) {
+          const rango = window.getSelection().getRangeAt(0);
+          const span = document.createElement("span");
+          span.textContent = seleccion;
+
+          console.log(seleccion);
+          span.classList.add("seleccionado");
+          rango.deleteContents();
+          rango.insertNode(span);
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!-- https://api-serverless.tikket.net/ml/692100e9-d5dd-414b-b1a4-47945e42a838/message?message=Color del carro&team_id=501bb09c-5cef-48cd-be39-3b989ca4b5ef -->
+
+<!-- {
+  "text": "Hola en cuanto salen los envios a merida",
+  "intent": "1300470010861594",
+  "entities": [
+      {
+          "id": "826208385695760",
+          "rol_id":"1450535345799281",
+          "start": 34,
+          "end": 40,
+          "body": "merida",
+          "entities": []
+      },
+      {
+          "id": "1261323727912850",
+          "rol_id":"1223982698242966",
+          "start": 8,
+          "end": 31,
+          "body": "cuanto salen los envios",
+          "entities": [
+              {
+                  "id": "3553510651562037",
+                  "start": 17,
+                  "end": 23,
+                  "body": "envios",
+                  "entities":[]
+              }
+          ]
+      }
+  ],
+  "traits": []
+} -->
