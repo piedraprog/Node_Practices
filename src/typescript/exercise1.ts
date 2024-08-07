@@ -45,7 +45,7 @@ for (let index = 0; index < arr.length; index++) {
             console.log('valor del array 2',countStart)
             if(countStart === 287) console.log("arr")
         }
-        // Cambiso de prueba
+        // Cambiso de prueba prueba 
         
         contador++;
     }
